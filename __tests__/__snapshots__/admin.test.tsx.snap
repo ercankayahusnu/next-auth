@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Admin Page > snapshot doğru çalışıyor 1`] = `
+<DocumentFragment>
+  <main
+    class="max-w-2xl mx-auto p-12 text-white"
+  >
+    <h1
+      class="text-3xl font-bold mb-4"
+    >
+       Admin Panel
+    </h1>
+    <p
+      class="mb-6"
+    >
+      Bu sayfa yalnızca 
+      <code
+        class="bg-gray-800 px-1 rounded"
+      >
+        role=admin
+      </code>
+      kullanıcıya açıktır.
+    </p>
+  </main>
+</DocumentFragment>
+`;
