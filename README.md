@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextAuth + Auth0 Case Çalışması
 
-## Getting Started
+## 🚀 Proje Hakkında
 
-First, run the development server:
+Bu proje, **Auth0** üzerinden kullanıcı kimlik doğrulama, **NextAuth.js** ile JWT tabanlı session yönetimi ve **middleware** ile sayfa bazlı yetkilendirme içerir.  
+12Factor App prensiplerine uygun şekilde `.env` yapılandırması yapılmış, **Docker** ile container ortamında çalıştırılabilir hale getirilmiştir.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+- Next.js 15+ (App Router)
+- TypeScript
+- Auth0 (OAuth2 Provider)
+- NextAuth.js
+- JWT (JSON Web Token)
+- TailwindCSS
+- Docker
+- Vitest
+
+---
+
+## 🔐 Özellikler
+
+- Auth0 ile kullanıcı kimlik doğrulama
+- NextAuth.js + JWT tabanlı session yönetimi
+- Middleware ile sayfa koruma
+- Rol tabanlı yetkilendirme (admin / user)
+- Unauthorized sayfası (`/errors/unauthorized`)
+- Docker konfigürasyonu
+- Temel testler (Vitest / Playwright)
+
+---
+
+## 📂 Proje Yapısı
+
+/ app <br>
+/api/auth/[...nextauth] → NextAuth config <br>
+/dashboard → Kullanıcıya özel sayfa <br>
+/admin → Admin rolü için korumalı sayfa <br>
+/errors/unauthorized → Yetkisiz erişim sayfası <br>
+middleware.ts → Route koruma
+
+---
+
+## ⚙️ Kurulum
+
+### 1. Repoyu klonla
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/kullaniciadi/next-auth.git
+  cd next-auth
+
+2.Ortam değişkenlerini ayarla
+  kök dizine .env.local dosyası ekle:
+
+  AUTH0_CLIENT_ID=xxxx
+  AUTH0_CLIENT_SECRET=xxxx
+  AUTH0_ISSUER_BASE_URL=https://dev-xxxxxx.us.auth0.com
+  NEXTAUTH_SECRET=xxxx
+  NEXTAUTH_URL=http://localhost:3000
+
+3. Docker ile çalıştır
+  docker compose up --build
+
+  Uygulama → http://localhost:3000
+
+4-Unit testleri çalıştırmak için:
+npm run test
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
